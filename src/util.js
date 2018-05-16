@@ -63,7 +63,11 @@ function getChoiceIndex (choice: number, choicesLength: number): number {
 
   if (choicesLength === 2) { return getOldChoiceIndexFixed(choice) }
 
-  return choice ? Math.min(choice, 2) : 0
+  if (choicesLength < 4) {
+    return choice ? Math.min(choice, 2) : 0
+  } else {
+    return choice ? Math.min(choice, 3) : 0
+  }
 }
 
 export function fetchChoice (message: string, choice: number): ?string {
